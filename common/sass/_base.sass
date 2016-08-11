@@ -1,0 +1,49 @@
+@mixin wheel-rotate-point($number)
+    $deg-calc: ($number - 1) * 36
+    -ms-transform: rotate(unquote($deg-calc + 'deg')) translate(-50%) /* IE 9 */
+    -webkit-transform: rotate(unquote($deg-calc + 'deg')) translate(-50%)  /* Safari */
+    transform: rotate(unquote($deg-calc + 'deg')) translate(-50%)
+
+@mixin transform-origin($x, $y)
+    -webkit-transform-origin: $x $y
+    -moz-transform-origin: $x $y
+    -o-transform-origin: $x $y
+    -ms-transform-origin: $x $y
+    transform-origin: $x $y
+
+.trans_origin_center
+    @include transform-origin(50%, 50%)
+
+@mixin pos_center($x_percent, $y_percent)
+    position: absolute
+    left: $x_percent
+    top: $y_percent
+    transform: translate(-50%, -50%)
+    -ms-transform: translate(-50%, -50%)
+    -webkit-transform: translate(-50%, -50%)
+    -moz-transform: translate(-50%, -50%)
+
+.pos_center
+    @include pos_center(50%, 50%)
+
+@mixin border_radius($radius)
+    -webkit-border-radius: $radius+px
+    -moz-border-radius: $radius+px
+    -ms-border-radius: $radius+px
+    -o-border-radius: $radius+px
+    border-radius: $radius+px
+
+.border_circle
+    @include border_radius(1000)
+
+.box-sizing
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    box-sizing: border-box
+
+@mixin pos_ab($value)
+    position: absolute
+    top: $value
+    left: $value
+    bottom: $value
+    right: $value
