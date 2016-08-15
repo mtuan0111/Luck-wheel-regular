@@ -38,7 +38,7 @@ a {
   -ms-transform-origin: 50% 50%;
   transform-origin: 50% 50%; }
 
-.pos_center, body #luck-wheel-regular .cricle-inside, body #luck-wheel-regular .cricle-inside .circle-center .processing-bar, body #luck-wheel-regular .cricle-inside .circle-pointer .bar-pointer {
+.pos_center, body #luck-wheel-regular .circle-inside, body #luck-wheel-regular .circle-inside .circle-center .processing-bar, body #luck-wheel-regular .circle-inside .circle-pointer .bar-pointer {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -47,14 +47,14 @@ a {
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%); }
 
-.border_circle, body #luck-wheel-regular .circle-outside .score-pointer, body #luck-wheel-regular .cricle-inside, body #luck-wheel-regular .cricle-inside .circle-center, body #luck-wheel-regular .cricle-inside .circle-pointer {
+.border_circle, body #luck-wheel-regular, body #luck-wheel-regular .circle-outside .score-pointer, body #luck-wheel-regular .circle-inside, body #luck-wheel-regular .circle-inside .circle-center, body #luck-wheel-regular .circle-inside .circle-pointer {
   -webkit-border-radius: 1000px;
   -moz-border-radius: 1000px;
   -ms-border-radius: 1000px;
   -o-border-radius: 1000px;
   border-radius: 1000px; }
 
-.box-sizing, body #luck-wheel-regular .cricle-inside .circle-center {
+.box-sizing, body #luck-wheel-regular .circle-inside .circle-center {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
@@ -63,7 +63,8 @@ body #luck-wheel-regular {
   position: relative;
   height: 500px;
   width: 500px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  overflow: hidden; }
   body #luck-wheel-regular .circle-outside .score-pointer {
     width: 100%;
     height: 100%;
@@ -120,49 +121,51 @@ body #luck-wheel-regular {
         -ms-transform: rotate(324deg) translate(-50%);
         -webkit-transform: rotate(324deg) translate(-50%);
         transform: rotate(324deg) translate(-50%); }
-  body #luck-wheel-regular .cricle-inside {
+      body #luck-wheel-regular .circle-outside .score-pointer li.selected {
+        color: red; }
+  body #luck-wheel-regular .circle-inside {
     height: 70%;
     width: 70%; }
-    body #luck-wheel-regular .cricle-inside .circle-center {
+    body #luck-wheel-regular .circle-inside .circle-center {
       position: absolute;
       top: 25%;
       left: 25%;
       bottom: 25%;
       right: 25%;
       background-color: #e75300; }
-      body #luck-wheel-regular .cricle-inside .circle-center .processing-bar div {
+      body #luck-wheel-regular .circle-inside .circle-center .processing-bar div {
         width: 20px;
         height: 20px;
         background-color: white;
         display: inline-block; }
-        body #luck-wheel-regular .cricle-inside .circle-center .processing-bar div + div {
+        body #luck-wheel-regular .circle-inside .circle-center .processing-bar div + div {
           margin-left: 4px; }
-        body #luck-wheel-regular .cricle-inside .circle-center .processing-bar div:nth-child(2) {
+        body #luck-wheel-regular .circle-inside .circle-center .processing-bar div:nth-child(2) {
           height: 40px; }
-        body #luck-wheel-regular .cricle-inside .circle-center .processing-bar div:nth-child(3) {
+        body #luck-wheel-regular .circle-inside .circle-center .processing-bar div:nth-child(3) {
           height: 60px; }
-    body #luck-wheel-regular .cricle-inside .circle-pointer {
+    body #luck-wheel-regular .circle-inside .circle-pointer {
       position: absolute;
       top: 5%;
       left: 5%;
       bottom: 5%;
       right: 5%; }
-      body #luck-wheel-regular .cricle-inside .circle-pointer .bar-pointer {
+      body #luck-wheel-regular .circle-inside .circle-pointer .bar-pointer {
         width: 35px;
         height: 55px;
         background-color: white;
         top: -10px; }
 
 .auto-wheel-clock {
-  animation: wheel_rotate linear 20s;
+  animation: wheel_rotate linear 20s forwards;
   animation-iteration-count: infinite;
-  -webkit-animation: wheel_rotate linear 20s;
+  -webkit-animation: wheel_rotate linear 20s forwards;
   -webkit-animation-iteration-count: infinite;
-  -moz-animation: wheel_rotate linear 20s;
+  -moz-animation: wheel_rotate linear 20s forwards;
   -moz-animation-iteration-count: infinite;
-  -o-animation: wheel_rotate linear 20s;
+  -o-animation: wheel_rotate linear 20s forwards;
   -o-animation-iteration-count: infinite;
-  -ms-animation: wheel_rotate linear 20s;
+  -ms-animation: wheel_rotate linear 20s forwards;
   -ms-animation-iteration-count: infinite;
   -webkit-transform-origin: 50% 50%;
   -moz-transform-origin: 50% 50%;
@@ -171,40 +174,40 @@ body #luck-wheel-regular {
   transform-origin: 50% 50%; }
 
 @keyframes wheel_rotate {
-  0% {
+  from {
     transform: rotate(0deg); }
-  100% {
+  to {
     transform: rotate(360deg); } }
 @-moz-keyframes wheel_rotate {
-  0% {
+  from {
     -moz-transform: rotate(0deg); }
-  100% {
+  to {
     -moz-transform: rotate(360deg); } }
 @-webkit-keyframes wheel_rotate {
-  0% {
+  from {
     -webkit-transform: rotate(0deg); }
-  100% {
+  to {
     -webkit-transform: rotate(360deg); } }
 @-o-keyframes wheel_rotate {
-  0% {
+  from {
     -o-transform: rotate(0deg); }
-  100% {
+  to {
     -o-transform: rotate(360deg); } }
 @-ms-keyframes wheel_rotate {
-  0% {
+  from {
     -ms-transform: rotate(0deg); }
-  100% {
+  to {
     -ms-transform: rotate(360deg); } }
 .auto-wheel-clock-rv {
-  animation: wheel_rotate-rv linear 30s;
+  animation: wheel_rotate-rv linear 30s forwards;
   animation-iteration-count: infinite;
-  -webkit-animation: wheel_rotate-rv linear 30s;
+  -webkit-animation: wheel_rotate-rv linear 30s forwards;
   -webkit-animation-iteration-count: infinite;
-  -moz-animation: wheel_rotate-rv linear 30s;
+  -moz-animation: wheel_rotate-rv linear 30s forwards;
   -moz-animation-iteration-count: infinite;
-  -o-animation: wheel_rotate-rv linear 30s;
+  -o-animation: wheel_rotate-rv linear 30s forwards;
   -o-animation-iteration-count: infinite;
-  -ms-animation: wheel_rotate-rv linear 30s;
+  -ms-animation: wheel_rotate-rv linear 30s forwards;
   -ms-animation-iteration-count: infinite;
   -webkit-transform-origin: 50% 50%;
   -moz-transform-origin: 50% 50%;
@@ -213,29 +216,29 @@ body #luck-wheel-regular {
   transform-origin: 50% 50%; }
 
 @keyframes wheel_rotate-rv {
-  0% {
+  from {
     transform: rotate(0deg); }
-  100% {
+  to {
     transform: rotate(-360deg); } }
 @-moz-keyframes wheel_rotate-rv {
-  0% {
+  from {
     -moz-transform: rotate(0deg); }
-  100% {
+  to {
     -moz-transform: rotate(-360deg); } }
 @-webkit-keyframes wheel_rotate-rv {
-  0% {
+  from {
     -webkit-transform: rotate(0deg); }
-  100% {
+  to {
     -webkit-transform: rotate(-360deg); } }
 @-o-keyframes wheel_rotate-rv {
-  0% {
+  from {
     -o-transform: rotate(0deg); }
-  100% {
+  to {
     -o-transform: rotate(-360deg); } }
 @-ms-keyframes wheel_rotate-rv {
-  0% {
+  from {
     -ms-transform: rotate(0deg); }
-  100% {
+  to {
     -ms-transform: rotate(-360deg); } }
 
 /*# sourceMappingURL=main.css.map */

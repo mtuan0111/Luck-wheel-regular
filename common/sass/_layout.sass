@@ -6,6 +6,8 @@ body
         height: 500px
         width: 500px
         margin: 0 auto
+        @extend .border_circle
+        overflow: hidden
         .circle-outside
             .score-pointer
                 // background: url(../../images/lucky-wheel-regular.svg) no-repeat center
@@ -27,8 +29,10 @@ body
                     @for $i from 1 through 10
                         &:nth-child(#{$i})
                             @include wheel-rotate-point($i)
+                    &.selected
+                        color: red
 
-        .cricle-inside
+        .circle-inside
             @extend .pos_center
             @extend .border_circle
             height: 70%
