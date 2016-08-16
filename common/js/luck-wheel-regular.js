@@ -2,6 +2,7 @@ $(document).ready(function() {
     var points_array = [1, 30, 5, 20, 1, 5, 50, 1, 20, 200];
 
     var random_rotate = getRandomIntInclusive(0,360);
+    var point_peace = 0;
     // function wheel_action_outside(point_value) {
     function wheel_action_outside() {
 
@@ -11,8 +12,8 @@ $(document).ready(function() {
         // $(document).off('click',"#rotate-wheel");
 
         //- setting variable
-        var point_peace = 0;
-        point_peace = getRandomIntInclusive(0, points_array.length - 1);
+
+
         // console.log(point_peace + " " + (points_array.length - 1));
         // while(point_value !== points_array[point_peace]){
         //   //- console.log(point_value);
@@ -25,7 +26,7 @@ $(document).ready(function() {
         // var deg_rotate = -(loop * 360 + (point_peace) * 36) + random_pointer;
         var deg_rotate = (loop * 360 - (point_peace) * 36) + random_pointer + random_rotate;
 
-        console.log(random_rotate);
+        console.log(point_peace);
 
         // $(window).bind('beforeunload', function(e){
         //   if(out)
@@ -73,8 +74,8 @@ $(document).ready(function() {
         // $(document).off('click',"#rotate-wheel");
 
         //- setting variable
-        var point_peace = 0;
-        point_peace = getRandomIntInclusive(0, points_array.length - 1);
+        // var point_peace = 0;
+        // point_peace = getRandomIntInclusive(0, points_array.length - 1);
         // console.log(point_peace + " " + (points_array.length - 1));
         // while(point_value !== points_array[point_peace]){
         //   //- console.log(point_value);
@@ -84,10 +85,10 @@ $(document).ready(function() {
         var loop = getRandomIntInclusive(6, 10);
         var random_pointer = getRandomIntInclusive(-16,16);
         var rotate_duration = loop * getRandomIntInclusive(1000, 1500);
-        var deg_rotate = -(loop * 360 + (point_peace) * 36) + random_pointer + random_rotate;
-        // var deg_rotate = (loop * 360 - (point_peace) * 36) + random_pointer + random_rotate;
+        // var deg_rotate = -(loop * 360 + (point_peace) * 36) + random_pointer + random_rotate;
+        var deg_rotate = (loop * 360 - (point_peace) * 36) + random_pointer + random_rotate - 135;
 
-        console.log(random_rotate);
+        console.log(point_peace);
 
         // $(window).bind('beforeunload', function(e){
         //   if(out)
@@ -101,9 +102,9 @@ $(document).ready(function() {
         }).animate({
             deg: deg_rotate
         }, {
-            duration: rotate_duration,
-            easing: "easeOutQuart",
-            specialEasing: "easeOutQuart",
+            duration: rotate_duration * 1.5,
+            easing: "easeInOutQuart",
+            specialEasing: "easeInOutQuart",
             step: function(now) {
                 elem_outside.css({
                     '-webkit-transform': "rotate(" + now + "deg)",
@@ -187,9 +188,10 @@ $(document).ready(function() {
 
     $(document).on("click", "#circle-outside", function() {
         // console.log(get_current_rotate("circle-outside"));
+        point_peace = getRandomIntInclusive(0, points_array.length - 1);
         wheel_action_outside();
         setTimeout(function(){
             wheel_action_inside();
-        },1000)
+        },100)
     });
 })
