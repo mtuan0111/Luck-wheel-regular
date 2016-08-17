@@ -1,14 +1,18 @@
 $(document).ready(function() {
     var points_array = [1, 30, 5, 20, 1, 5, 50, 1, 20, 200];
 
-    var random_rotate = getRandomIntInclusive(0,360);
+    var random_rotate = getRandomIntInclusive(0, 360);
     var point_peace = 0;
+    var random_pointer;
+    var elem_outside = $("#circle-outside");
+    var action_done = false;
     // function wheel_action_outside(point_value) {
     function wheel_action_outside() {
 
         // var elem = $("#rotate-wheel").stop(true,false).removeClass("auto-wheel");
         var current_deg = get_current_rotate("circle-outside");
-        var elem_outside = $("#circle-outside").removeClass("auto-wheel-clock");
+        elem_outside.removeClass("auto-wheel-clock");
+
         // $(document).off('click',"#rotate-wheel");
 
         //- setting variable
@@ -21,10 +25,10 @@ $(document).ready(function() {
         // }
         // //- console.log(point_peace);
         var loop = getRandomIntInclusive(6, 10);
-        var random_pointer = getRandomIntInclusive(-16,16);
-        var rotate_duration = loop * getRandomIntInclusive(1000, 1500);
+        random_pointer = getRandomIntInclusive(-16, 16);
+        rotate_duration = loop * getRandomIntInclusive(1500, 2000);
         // var deg_rotate = -(loop * 360 + (point_peace) * 36) + random_pointer;
-        var deg_rotate = (loop * 360 - (point_peace) * 36) + random_pointer + random_rotate;
+        var deg_rotate = (loop * 360 - (0) * 36) + random_pointer + random_rotate;
 
         console.log(point_peace);
 
@@ -41,8 +45,8 @@ $(document).ready(function() {
             deg: deg_rotate
         }, {
             duration: rotate_duration,
-            easing: "easeOutQuart",
-            specialEasing: "easeOutQuart",
+            easing: "easeOutCirc",
+            specialEasing: "easeOutCirc",
             step: function(now) {
                 elem_outside.css({
                     '-webkit-transform': "rotate(" + now + "deg)",
@@ -60,17 +64,27 @@ $(document).ready(function() {
                 //- console.log(point_peace);
                 // $(".point-result").attr("data-score", points_array[point_peace]);
                 //- console.log(get_current_rotate("rotate-wheel"));
-                $(".score-pointer li.selected:not(:nth-child(" + (point_peace + 1) + "))").removeClass("selected");
-                $(".score-pointer li:nth-child(" + (point_peace + 1) + ")").addClass("selected");
+
+
+                current_deg = get_current_rotate("circle-outside");
+
+                if (action_done) {
+                    repointer();
+                } else {
+                    action_done = true;
+                }
+
             },
         });
     }
+
+    var elem_inside = $("#circle-pointer");
 
     function wheel_action_inside() {
 
         // var elem = $("#rotate-wheel").stop(true,false).removeClass("auto-wheel");
         var current_deg = get_current_rotate("circle-pointer");
-        var elem_outside = $("#circle-pointer").removeClass("auto-wheel-clock-rv");
+        elem_inside.removeClass("auto-wheel-clock-rv");
         // $(document).off('click',"#rotate-wheel");
 
         //- setting variable
@@ -82,11 +96,12 @@ $(document).ready(function() {
         //   point_peace = getRandomIntInclusive(0, points_array.length);
         // }
         // //- console.log(point_peace);
-        var loop = getRandomIntInclusive(6, 10);
-        var random_pointer = getRandomIntInclusive(-16,16);
-        var rotate_duration = loop * getRandomIntInclusive(1000, 1500);
+        var loop = getRandomIntInclusive(2, 3);
+        // var random_pointer = getRandomIntInclusive(-16,16);
+        var rotate_duration = loop * getRandomIntInclusive(2500, 3500);
         // var deg_rotate = -(loop * 360 + (point_peace) * 36) + random_pointer + random_rotate;
-        var deg_rotate = (loop * 360 - (point_peace) * 36) + random_pointer + random_rotate - 135;
+        // var deg_rotate = -(loop * 360 + (point_peace) * 36) + random_rotate - 135;
+        var deg_rotate = -135 - ((loop * 360) - (point_peace * 36)) + random_rotate;
 
         console.log(point_peace);
 
@@ -102,11 +117,11 @@ $(document).ready(function() {
         }).animate({
             deg: deg_rotate
         }, {
-            duration: rotate_duration * 1.5,
-            easing: "easeInOutQuart",
-            specialEasing: "easeInOutQuart",
+            duration: rotate_duration * 2,
+            easing: "easeInOutCubic",
+            specialEasing: "easeInOutCubic",
             step: function(now) {
-                elem_outside.css({
+                elem_inside.css({
                     '-webkit-transform': "rotate(" + now + "deg)",
                     '-moz-transform': "rotate(" + now + "deg)",
                     '-ms-transform': "rotate(" + now + "deg)",
@@ -124,10 +139,67 @@ $(document).ready(function() {
                 //- console.log(get_current_rotate("rotate-wheel"));
                 // $(".score-pointer li.selected:not(:nth-child(" + (point_peace + 1) + "))").removeClass("selected");
                 // $(".score-pointer li:nth-child(" + (point_peace + 1) + ")").addClass("selected");
+
+                console.log(action_done);
+
+
+                if (action_done) {
+                    repointer();
+                } else {
+                    action_done = true;
+                }
             },
         });
     }
 
+    function repointer() {
+        current_deg = get_current_rotate("circle-pointer");
+        $({
+            deg: current_deg
+        }).animate({
+            deg: current_deg + random_pointer/2
+        }, {
+            duration: 1000,
+            easing: "easeInOutCubic",
+            specialEasing: "easeInOutCubic",
+            step: function(now) {
+                elem_inside.css({
+                    '-webkit-transform': "rotate(" + now + "deg)",
+                    '-moz-transform': "rotate(" + now + "deg)",
+                    '-ms-transform': "rotate(" + now + "deg)",
+                    '-o-transform': "rotate(" + now + "deg)",
+                    'transform': "rotate(" + now + "deg)"
+                });
+                console.log(123);
+                // object.style.transform="rotate(" + now + "deg)"
+            },
+        })
+
+        current_deg = get_current_rotate("circle-outside");
+        $({
+            deg: current_deg
+        }).animate({
+            deg: current_deg - random_pointer/2
+        }, {
+            duration: 1000,
+            easing: "easeInOutCubic",
+            specialEasing: "easeInOutCubic",
+            step: function(now) {
+                elem_outside.css({
+                    '-webkit-transform': "rotate(" + now + "deg)",
+                    '-moz-transform': "rotate(" + now + "deg)",
+                    '-ms-transform': "rotate(" + now + "deg)",
+                    '-o-transform': "rotate(" + now + "deg)",
+                    'transform': "rotate(" + now + "deg)"
+                });
+                // object.style.transform="rotate(" + now + "deg)"
+            },
+            done: function(){
+                $(".score-pointer li.selected:not(:nth-child(" + (point_peace + 1) + "))").removeClass("selected");
+                $(".score-pointer li:nth-child(" + (point_peace + 1) + ")").addClass("selected");
+            }
+        })
+    }
 
     function get_current_rotate(id) {
         var el = document.getElementById(id);
@@ -171,17 +243,17 @@ $(document).ready(function() {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    function load_score(){
-        for (i = 0; i < points_array.length; i++){
-          (function(i){
+    function load_score() {
+        for (i = 0; i < points_array.length; i++) {
+            (function(i) {
 
-              var point_value = document.createElement("li");  // Create with DOM
-              point_value.setAttribute("data-point-value", points_array[i]);
-              point_value.innerHTML = points_array[i];
-              $("ul.score-pointer").append(point_value).attr("data-point-value", points_array[i]);
-              // alert(points_array[i]);
-          }(i));
-          // total_delay = 100 * i + delay_time;
+                var point_value = document.createElement("li"); // Create with DOM
+                point_value.setAttribute("data-point-value", points_array[i]);
+                point_value.innerHTML = points_array[i];
+                $("ul.score-pointer").append(point_value).attr("data-point-value", points_array[i]);
+                // alert(points_array[i]);
+            }(i));
+            // total_delay = 100 * i + delay_time;
         }
     };
     load_score();
@@ -189,9 +261,11 @@ $(document).ready(function() {
     $(document).on("click", "#circle-outside", function() {
         // console.log(get_current_rotate("circle-outside"));
         point_peace = getRandomIntInclusive(0, points_array.length - 1);
-        wheel_action_outside();
-        setTimeout(function(){
+        action_done = false;
+        setTimeout(function() {
+            wheel_action_outside();
             wheel_action_inside();
-        },100)
+
+        }, 100)
     });
 })

@@ -1,14 +1,17 @@
 body
-    // background: red
+    background: blue
 
     #luck-wheel-regular
         position: relative
         height: 500px
         width: 500px
         margin: 0 auto
-        @extend .border_circle
-        overflow: hidden
+        // @extend .border_circle
+
         .circle-outside
+            background: url(../../images/lucky-wheel-regular.svg) no-repeat center
+            height: 100%
+            width: 100%
             .score-pointer
                 // background: url(../../images/lucky-wheel-regular.svg) no-repeat center
                 // @extend .pos_center
@@ -71,3 +74,82 @@ body
                     background-color: white
                     @extend .pos_center
                     top: -10px
+
+
+
+    #popup-lucky-wheel
+        background: white
+        width: 800px
+        max-width: 80%
+        margin: 0 auto
+        overflow: hidden
+        position: relative
+        position: absolute
+        left: 50%
+        top: 50%
+        -webkit-transform: translate(-50%, -50%)
+        -ms-transform: translate(-50%, -50%)
+        -o-transform: translate(-50%, -50%)
+        transform: translate(-50%, -50%)
+
+        .close-btn
+            height: 100px
+            width: 100px
+            background-color: #e75300
+            float: right
+            @extend .border_circle
+            position: absolute
+            right: 0
+            top: 0
+            -webkit-transform: translate(50%, -50%) rotate(45deg)
+            -ms-transform: translate(50%, -50%) rotate(45deg)
+            -o-transform: translate(50%, -50%) rotate(45deg)
+            transform: translate(50%, -50%) rotate(45deg)
+            color: white
+            text-align: center
+            text-decoration: none
+            opacity: 0.4
+            span
+                position: absolute
+                bottom: 5%
+                -webkit-transform: translate(-50%, -50%)
+                -ms-transform: translate(-50%, -50%)
+                -o-transform: translate(-50%, -50%)
+                transform: translate(-50%, -50%)
+
+        &.step-01
+
+            #luck-wheel-regular
+                pointer-events: none
+                right: 40%
+                opacity: 0.4
+                height: 600px
+                width: 600px
+                margin-bottom: -30%
+                margin-top: 10%
+                .circle-outside
+                    -webkit-filter: blur(3px)
+                    filter: blur(3px)
+                .circle-inside
+                    .circle-pointer
+                        -webkit-filter: blur(1px)
+                        filter: blur(1px)
+            .popup-content
+                height: 90%
+                position: absolute
+                top: 10%
+                right: 5%
+                width: 60%
+                text-align: center
+                .campaign-title
+                    font-size: 2.5em
+                .btn-start
+                    text-transform: uppercase
+                    margin: 4em 0
+                    display: inline-block
+                    font-size: 2em
+                    text-decoration: none
+                    color: black
+                .check-rem
+
+

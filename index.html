@@ -15,27 +15,33 @@
       </div>
       <div id="contents">
         <div class="content-inner">
-          <div id="luck-wheel-regular">
-            <div id="circle-outside" class="circle-outside auto-wheel-clock">
-              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1000 1000">
-                <path d="M1171.227,272.62907c0-276.14249-223.85771-500-500-500s-500,223.85751-500,500c0,276.14229,223.85771,500,500,500S1171.227,548.77136,1171.227,272.62907ZM560.573,592.78346a339.39705,339.39705,0,0,1-159.5776-116.02223L290.78407,549.037l102.79042-82.47872a336.97678,336.97678,0,0,1-60.93283-187.61993l-131.66818-6.30927,131.66818-6.30948A336.97678,336.97678,0,0,1,393.57449,78.69966L290.78407-3.77906,400.99538,68.49671A339.39705,339.39705,0,0,1,560.573-47.52553L525.9106-174.6085,572.56666-51.41962a340.28649,340.28649,0,0,1,197.32039,0L816.54311-174.6085l-34.66238,127.083A339.39864,339.39864,0,0,1,941.45853,68.49671L1051.66985-3.77906,948.87943,78.69966a336.97678,336.97678,0,0,1,60.93283,187.61993l131.668,6.30948-131.668,6.30927a336.97678,336.97678,0,0,1-60.93283,187.61993L1051.66985,549.037,941.45853,476.76123a339.39864,339.39864,0,0,1-159.5778,116.02223l34.66238,127.083L769.887,596.67756a340.28649,340.28649,0,0,1-197.32039,0L525.9106,719.86643Z" transform="translate(-171.22696 227.37093)" style="fill: #99928f"></path>
-              </svg>
-              <ul class="score-pointer">
-              </ul>
-            </div>
-            <div class="circle-inside">
-              <div class="circle-center">
-                <div class="processing-bar">
-                  <div></div>
-                  <div></div>
-                  <div></div>
+          <div id="popup-lucky-wheel" class="step-01"><a href="#" class="close-btn"><span>X</span></a>
+            <div id="luck-wheel-regular">
+              <div id="circle-outside" class="circle-outside auto-wheel-clock">
+                <ul class="score-pointer">
+                </ul>
+              </div>
+              <div class="circle-inside">
+                <div class="circle-center">
+                  <div class="processing-bar">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </div>
+                <div id="circle-pointer" class="circle-pointer auto-wheel-clock-rv">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 500 500">
+                    <path d="M498.73,531.37L452.39,485c-72.27,50.74-172.66,43.87-237.25-20.72-72.35-72.35-72.34-189.64,0-262s189.64-72.35,262,0c64.6,64.6,71.46,165,20.69,237.29L544.15,486c75.78-98.05,68.69-239.47-21.25-329.42-97.63-97.63-255.92-97.63-353.55,0s-97.63,255.92,0,353.55C259.28,600,400.68,607.11,498.73,531.37Z" transform="translate(-96.13 -83.31)" style="fill: #e75300"></path>
+                  </svg>
                 </div>
               </div>
-              <div id="circle-pointer" class="circle-pointer auto-wheel-clock-rv">
-                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 500 500">
-                  <path d="M498.73,531.37L452.39,485c-72.27,50.74-172.66,43.87-237.25-20.72-72.35-72.35-72.34-189.64,0-262s189.64-72.35,262,0c64.6,64.6,71.46,165,20.69,237.29L544.15,486c75.78-98.05,68.69-239.47-21.25-329.42-97.63-97.63-255.92-97.63-353.55,0s-97.63,255.92,0,353.55C259.28,600,400.68,607.11,498.73,531.37Z" transform="translate(-96.13 -83.31)" style="fill: #e75300"></path>
-                </svg>
-              </div>
+            </div>
+            <div class="popup-content">
+              <p class="campaign-title">Vòng quay may mắn</p><a href="#" class="btn-start">bắt đầu quay</a>
+              <p class="check-rem">
+                <input id="show-again" type="checkbox">
+                <label for="show-again">Không hiện lại lần sau</label>
+              </p>
             </div>
           </div>
         </div>
