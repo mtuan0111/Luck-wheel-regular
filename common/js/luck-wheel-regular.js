@@ -25,7 +25,7 @@ $(document).ready(function() {
         // }
         // //- console.log(point_peace);
         var loop = getRandomIntInclusive(6, 10);
-        random_pointer = getRandomIntInclusive(-16, 16);
+        random_pointer = getRandomIntInclusive(-17, 17);
         rotate_duration = loop * getRandomIntInclusive(1500, 2000);
         // var deg_rotate = -(loop * 360 + (point_peace) * 36) + random_pointer;
         var deg_rotate = (loop * 360 - (0) * 36) + random_pointer + random_rotate;
@@ -199,6 +199,8 @@ $(document).ready(function() {
                 $(".score-pointer li:nth-child(" + (point_peace + 1) + ")").addClass("selected");
             }
         })
+
+        $(".processing-bar").removeClass("process");
     }
 
     function get_current_rotate(id) {
@@ -258,14 +260,40 @@ $(document).ready(function() {
     };
     load_score();
 
-    $(document).on("click", "#circle-outside", function() {
-        // console.log(get_current_rotate("circle-outside"));
-        point_peace = getRandomIntInclusive(0, points_array.length - 1);
+    function wheel_action(point_arg){
+        if(point_arg && (typeof(point_arg) !== "undefined"))
+            point_peace = point_arg;
+        else
+            point_peace = getRandomIntInclusive(0, points_array.length - 1);
         action_done = false;
         setTimeout(function() {
+            $(".processing-bar").addClass("process");
             wheel_action_outside();
             wheel_action_inside();
 
-        }, 100)
+        }, 50)
+
+    }
+
+    $(document).on("click", "#circle-outside", function() {
+        // console.log(get_current_rotate("circle-outside"));
+        // wheel_action(1);
     });
+
+    $(document).on("click", ".close-btn", function() {
+        $("#popup-lucky-wheel").fadeOut();
+    });
+
+    $(document).on("click", ".btn-start", function() {
+        $(".popup-content").fadeOut(300,function(){
+            // alert(123);
+            $("#popup-lucky-wheel").removeClass("step-01");
+
+            this.remove();
+            wheel_action();
+        })
+        $(".close-btn").fadeOut();
+    });
+
+
 })

@@ -115,3 +115,75 @@
     to
         -ms-transform: rotate(-360deg)
 
+// processing bar
+
+@for $i from 1 through 3
+    // &:nth-child(#{$i})
+        // @include wheel-rotate-point($i)
+    $begin: ($i - 1) * 25
+    $middle: ($i) * 25
+    $end: 100
+    .processing_bar_#{$i}
+        animation: processing_animate_#{$i} linear 0.5s forwards
+        animation-iteration-count: infinite
+
+        -webkit-animation: processing_animate_#{$i} linear 0.5s forwards
+        -webkit-animation-iteration-count: infinite
+
+        -moz-animation: processing_animate_#{$i} linear 0.5s forwards
+        -moz-animation-iteration-count: infinite
+
+        -o-animation: processing_animate_#{$i} linear 0.5s forwards
+        -o-animation-iteration-count: infinite
+
+        -ms-animation: processing_animate_#{$i} linear 0.5s forwards
+        -ms-animation-iteration-count: infinite
+
+        @include transform-origin(50%,50%)
+    @keyframes processing_animate_#{$i}
+        #{$begin}%
+            background-color: #fff
+
+        #{$middle}%
+            background-color: #99928f
+
+        #{$end}%
+            background-color: #fff
+
+    @-moz-keyframes processing_animate_#{$i}
+        #{$begin}%
+            background-color: #fff
+
+        #{$middle}%
+            background-color: #99928f
+
+        #{$end}%
+            background-color: #fff
+    @-webkit-keyframes processing_animate_#{$i}
+        #{$begin}%
+            background-color: #fff
+
+        #{$middle}%
+            background-color: #99928f
+
+        #{$end}%
+            background-color: #fff
+    @-o-keyframes processing_animate_#{$i}
+        #{$begin}%
+            background-color: #fff
+
+        #{$middle}%
+            background-color: #99928f
+
+        #{$end}%
+            background-color: #fff
+    @-ms-keyframes processing_animate_#{$i}
+        #{$begin}%
+            background-color: #fff
+
+        #{$middle}%
+            background-color: #99928f
+
+        #{$end}%
+            background-color: #fff
+
